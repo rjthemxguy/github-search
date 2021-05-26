@@ -3,20 +3,9 @@ import React, { Component } from 'react';
 
 
 
-class UserItem extends Component {
+const UserItem = ({user: {login, avatar_url, html_url}}) => {
 
-    state = {
-        id : "id",
-        login: "rj",
-        avatar_url:"https://avatars.githubusercontent.com/u/1?v=4",
-        html_url: "https://github.com/mojombo"
-  
-      }
-
-
-    render() {
-
-        const {login, avatar_url,html_url} = this.state;
+ 
 
         return (
             <div className="card text-center">
@@ -27,7 +16,7 @@ class UserItem extends Component {
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default UserItem

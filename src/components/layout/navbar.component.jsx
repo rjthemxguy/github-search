@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
-export class Navbar extends Component {
-    render() {
+ const Navbar = ({title}) => {
+   
         return (
             <div>
                 <h1>
                 <FontAwesomeIcon icon={faGithub} />
-                {this.props.title}</h1>
+                {title}</h1>
             </div>
         )
-    }
+   
 }
 
 export default Navbar
