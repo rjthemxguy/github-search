@@ -14,15 +14,22 @@ state = {
 
   async componentDidMount () {
 
-    this.setState({loading:true});
+   
 
 
-    const res = await axios.get(`https://api.github.com/users?client_id=$
-    {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_ID_SECRET}`);
-
-    this.setState({users:res.data, loading:false});  
+    
   }
   
+  searchUsers = async (text) => {
+
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=$
+    {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_ID_SECRET}`);
+
+    this.setState({users:res.data.items, loading:false});  
+
+    console.log(text)
+
+  }
 
   render() {
 
@@ -34,7 +41,7 @@ state = {
         <Navbar title="GitHub Finder" icon="faGithub"/>
       </nav>
       <div className="container">
-        <Search/>
+        <Search searchUsers={this.searchUsers}/>
       <Users loading={this.state.loading} users={this.state.users}/>
       </div>
       </div>
